@@ -1,4 +1,5 @@
 import 'dotenv/config';
+import { join } from 'path';
 import { DataSource } from 'typeorm';
 import { Task } from '../tasks/entities/task.entity';
 
@@ -12,7 +13,7 @@ const AppDataSource = new DataSource({
 
   entities: [Task],
 
-  migrations: ['src/migrations/*.ts'],
+  migrations: [join(__dirname, '../migrations/*{.ts,.js}')],
 
   synchronize: false,
 });
